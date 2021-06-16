@@ -41,7 +41,7 @@ class MappingAdapter:
         #20x30
         #light has reversed dimensions => 30x20 for dim
         dimension = (len(grid[0]), len(grid))
-        adaptee.set_dim(dimension)
+        self.adaptee.set_dim(dimension)
         #find where are lights and where are blocks
         obstacles = []
         lights = []
@@ -51,6 +51,7 @@ class MappingAdapter:
                     lights.append(row, column)
                 elif value == -1:
                     obstacles.append(row, column)
-        adaptee.set_lights(lights)
-        adaptee.set_obstacles(obstacles)
-        return adaptee.generate_lights()
+        self.adaptee.set_lights(lights)
+        self.adaptee.set_obstacles(obstacles)
+        light_map = self.adaptee.generate_lights()
+        return light_map
