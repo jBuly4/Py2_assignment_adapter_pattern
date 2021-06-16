@@ -37,6 +37,19 @@ class MappingAdapter:
         self.adaptee = adaptee
 
     def lighten(self, grid):
-        adaptee.set_lights(grid[7][5])
-        adaptee.set_obstacles(grid[2][5])
+        #grid is a map which is list of 20 lists with size 30, that means 30x20
+        #light has reversed dimensions => 20x30 for dim
+        dimension = (len(grid), len(grid[0]))
+        adaptee.set_dim(dimension)
+        #find where are lights and where are blocks
+        obstacles = []
+        lights = []
+        for column, lst in enumerate(grid):
+            for row, value in enumerate(lst):
+                if value == 1:
+                    lights.append(column, row)
+                elif value == -1:
+                    obstacles.append(column, row)
+        adaptee.set_lights(lights)
+        adaptee.set_obstacles(obstacles)
         return adaptee.generate_lights()
