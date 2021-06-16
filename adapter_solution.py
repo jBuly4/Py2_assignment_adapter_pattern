@@ -48,9 +48,9 @@ class MappingAdapter:
         for row, lst in enumerate(grid):
             for column, value in enumerate(lst):
                 if value == 1:
-                    lights.append(column, row)
+                    lights.append(row, column)
                 elif value == -1:
-                    obstacles.append(column, row)
+                    obstacles.append(row, column)
         adaptee.set_lights(lights)
         adaptee.set_obstacles(obstacles)
         return adaptee.generate_lights()
