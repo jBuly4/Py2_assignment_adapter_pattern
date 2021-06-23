@@ -1,3 +1,4 @@
 *.pyc
-adapt_venv/
 .ipynb_checkpoints/
+adapt_venv/
+.DS_Store
